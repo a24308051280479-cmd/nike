@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<!-- Declaración del estándar HTML5 -->
+<html lang="es">
+<head>
+    <!-- Configuración de caracteres y diseño adaptable a móviles -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Store - Calzado y Ropa Deportiva</title>
+    
+    <!-- Fuente Google Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- HOJA DE ESTILOS CSS -->
+    <style>
+        /* Reset de márgenes y tipografía principal */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #111111;
+        }
+
+        /* 1. ENCABEZADO (HEADER) */
+        header {
+            background-color: #111111;
+            color: #ffffff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .busqueda input {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            width: 250px;
+        }
+
+        .user-nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 15px;
+            font-size: 14px;
+        }
+
+        /* 2. BARRA DE NAVEGACIÓN (NAV) */
+        nav {
+            background-color: #ffffff;
+            padding: 12px 40px;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #111111;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #737373;
+        }
+
+        /* 3. CUERPO PRINCIPAL (MAIN) */
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Banner Hero Promocional */
+        .hero-banner {
+            background: url('https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=1200') center/cover;
+            height: 350px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            padding: 40px;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .hero-text h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        /* Sección de Títulos */
+        .titulo-seccion {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Rejilla de Productos (Grid) */
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        /* Tarjeta de Producto */
+        .tarjeta-producto {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .tarjeta-producto:hover {
+            transform: translateY(-5px);
+        }
+
+        .tarjeta-producto img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .info-producto {
+            padding: 15px;
+        }
+
+        .info-producto h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .info-producto .categoria {
+            font-size: 12px;
+            color: #737373;
+            margin-bottom: 10px;
+        }
+
+        .info-producto .precio {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .btn-comprar {
+            display: block;
+            width: 100%;
+            background-color: #111111;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* SECCIÓN DE FORMULARIOS (LOGIN Y REGISTRO) */
+        .seccion-formularios {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-top: 40px;
+        }
+
+        .contenedor-forms {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .form-box {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .form-box h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .campo {
+            margin-bottom: 15px;
+        }
+
+        .campo label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .campo input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .btn-enviar {
+            width: 100%;
+            padding: 12px;
+            background-color: #111111;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .btn-enviar:hover {
+            background-color: #333333;
+        }
+
+        /* 4. PIE DE PÁGINA (FOOTER) */
+        footer {
+            background-color: #111111;
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col a {
+            color: #737373;
+            text-decoration: none;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            font-size: 12px;
+            color: #737373;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         1. ENCABEZADO (HEADER)
+         ========================================== -->
+    <header>
+        <a href="#" class="logo">NIKE</a>
+        
+        <div class="busqueda">
+            <input type="text" placeholder="Buscar productos...">
+        </div>
+
+        <div class="user-nav">
+            <a href="#acceso">Iniciar Sesión / Registro</a>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         2. BARRA DE NAVEGACIÓN (NAV)
+         ========================================== -->
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#productos">Calzado</a></li>
+            <li><a href="#productos">Ropa</a></li>
+            <li><a href="#productos">Accesorios</a></li>
+            <li><a href="#acceso">Mi Cuenta</a></li>
+        </ul>
+    </nav>
+
+    <!-- ==========================================
+         3. CUERPO PRINCIPAL (MAIN)
+         ========================================== -->
+    <main>
+
+        <!-- Banner Promocional -->
+        <section class="hero-banner">
+            <div class="hero-text">
+                <h1>JUST DO IT.</h1>
+                <p>Descubre la nueva colección de calzado y ropa deportiva.</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE PRODUCTOS EN VENTA -->
+        <section id="productos">
+            <h2 class="titulo-seccion">Productos Destacados</h2>
+
+            <div class="grid-productos">
+                <!-- Producto 1 -->
+                <article class="tarjeta-producto">
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500" alt="Nike Air Force 1">
+                    <div class="info-producto">
+                        <h3>Nike Air Force 1</h3>
+                        <p class="categoria">Calzado Urbano</p>
+                        <p class="precio">$2,499.00 MXN</p>
+                        <a href="#" class="btn-comprar">Añadir al Carrito</a>
+                    </div>
+                </article>
+
+                <!-- Producto 2 -->
+                <article class="tarjeta-producto">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Nike Air Max 270">
+                    <div class="info-producto">
+                        <h3>Nike Air Max 270</h3>
+                        <p class="categoria">Calzado Running</p>
+                        <p class="precio">$3,199.00 MXN</p>
+                        <a href="#" class="btn-comprar">Añadir al Carrito</a>
+                    </div>
+                </article>
+
+                <!-- Producto 3 -->
+                <article class="tarjeta-producto">
+                    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500" alt="Sudadera Sportswear">
+                    <div class="info-producto">
+                        <h3>Sudadera Nike Sportswear</h3>
+                        <p class="categoria">Ropa Casual</p>
+                        <p class="precio">$1,299.00 MXN</p>
+                        <a href="#" class="btn-comprar">Añadir al Carrito</a>
+                    </div>
+                </article>
+
+                <!-- Producto 4 -->
+                <article class="tarjeta-producto">
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="Playera Dri-FIT">
+                    <div class="info-producto">
+                        <h3>Playera Dri-FIT Running</h3>
+                        <p class="categoria">Ropa Deportiva</p>
+                        <p class="precio">$699.00 MXN</p>
+                        <a href="#" class="btn-comprar">Añadir al Carrito</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE ACCESO: FORMULARIO INICIO DE SESIÓN Y REGISTRO -->
+        <section id="acceso" class="seccion-formularios">
+            <h2 class="titulo-seccion">Gestión de Cuenta</h2>
+
+            <div class="contenedor-forms">
+                
+                <!-- FORMULARIO 1: INICIO DE SESIÓN -->
+                <div class="form-box">
+                    <h2>Iniciar Sesión</h2>
+                    <!-- Se conecta con login.php para validar los datos en SQL -->
+                    <form action="login.php" method="POST">
+                        <div class="campo">
+                            <label for="login-email">Correo Electrónico</label>
+                            <input type="email" id="login-email" name="email" placeholder="correo@ejemplo.com" required>
+                        </div>
+                        <div class="campo">
+                            <label for="login-password">Contraseña</label>
+                            <input type="password" id="login-password" name="password" placeholder="Tu contraseña" required>
+                        </div>
+                        <button type="submit" class="btn-enviar">Ingresar</button>
+                    </form>
+                </div>
+
+                <!-- FORMULARIO 2: REGISTRO DE USUARIOS -->
+                <div class="form-box">
+                    <h2>Crear Cuenta</h2>
+                    <!-- Se conecta con registro.php para guardar los datos mediante SQL -->
+                    <form action="registro.php" method="POST">
+                        <div class="campo">
+                            <label for="reg-nombre">Nombre Completo</label>
+                            <input type="text" id="reg-nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+                        </div>
+                        <div class="campo">
+                            <label for="reg-email">Correo Electrónico</label>
+                            <input type="email" id="reg-email" name="email" placeholder="correo@ejemplo.com" required>
+                        </div>
+                        <div class="campo">
+                            <label for="reg-password">Contraseña</label>
+                            <input type="password" id="reg-password" name="password" placeholder="Crea una contraseña" required>
+                        </div>
+                        <button type="submit" class="btn-enviar">Registrarse</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+         4. PIE DE PÁGINA (FOOTER)
+         ========================================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Buscar Tiendas</h4>
+                <ul>
+                    <li><a href="#">Ubicar tienda cercana</a></li>
+                    <li><a href="#">Hazte Miembro</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Estado de tu pedido</a></li>
+                    <li><a href="#">Envíos y entregas</a></li>
+                    <li><a href="#">Devoluciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Acerca de Nike</h4>
+                <ul>
+                    <li><a href="#">Noticias</a></li>
+                    <li><a href="#">Empleos</a></li>
+                    <li><a href="#">Sostenibilidad</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nike, Inc. Todos los derechos reservados. Proyecto Web con integración de Base de Datos SQL.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
