@@ -1,0 +1,17 @@
+<?php
+// Configuración de los parámetros de conexión
+$host = "localhost";
+$user = "root";       // Tu usuario de MySQL
+$pass = "";           // Tu contraseña de MySQL
+$db   = "tienda_nike";
+
+// Intenta realizar la conexión a la Base de Datos mediante mysqli
+$conexion = new mysqli($host, $user, $pass, $db);
+
+// Verifica si ocurrió algún error en la conexión
+if ($conexion->connect_error) {
+    die("Error de conexión a la Base de Datos: " . $conexion->connect_error);
+}
+// Establece el conjunto de caracteres a UTF-8
+$conexion->set_charset("utf8");
+?>
