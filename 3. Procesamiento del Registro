@@ -1,0 +1,22 @@
+<?php
+// Incluye la conexión a la base de datos
+include("conexion.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recibe y limpia los datos enviados por el formulario
+    $nombre = $conexion->real_escape_string($_POST['nombre']);
+    $email = $conexion->real_escape_string($_POST['email']);
+    // Encripta la contraseña para mayor seguridad
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    // Consulta SQL para insertar el nuevo usuario
+    $sql = "INSERT INTO usuarios (nombre, email, password) VALUES ('$nombre', '$email', '$password')";
+
+    if ($conexion->query($sql) === TRUE) {
+        echo "<script>alert('¡Registro exitoso! Ya puedes iniciar sesión.'); window.location.href='index.php#acceso';</script>";
+    } else {
+        echo "<script>alert('Error al registrar: " . $conexion->error . "'); window.location.href='index.php#acceso';</script>";
+    }
+}
+$conexion->close();
+?>
