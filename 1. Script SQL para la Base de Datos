@@ -1,0 +1,30 @@
+-- Crea la base de datos para la tienda
+CREATE DATABASE IF NOT EXISTS tienda_nike CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Selecciona la base de datos para trabajar sobre ella
+USE tienda_nike;
+
+-- Tabla para almacenar los usuarios registrados
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla para almacenar el catálogo de productos
+CREATE TABLE IF NOT EXISTS productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(120) NOT NULL,
+    categoria VARCHAR(50) NOT NULL,
+    precio DECIMAL(10,2) NOT NULL,
+    imagen VARCHAR(255) NOT NULL
+);
+
+-- Inserción de productos de ejemplo
+INSERT INTO productos (nombre, categoria, precio, imagen) VALUES
+('Nike Air Force 1', 'Calzado', 2499.00, 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500'),
+('Nike Air Max 270', 'Calzado', 3199.00, 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500'),
+('Sudadera Nike Sportswear', 'Ropa', 1299.00, 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500'),
+('Playera Dri-FIT Running', 'Ropa', 699.00, 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500');
